@@ -3,6 +3,9 @@ class Article < ApplicationRecord
   has_many :taggings
   has_many :tags, through: :taggings
 
+  has_attached_file :image
+  validates_attachment_content_type :image, :content_type => ["image/png", "image/jpeg", "image/jpg"]
+
   def tag_list
     tags.join(", ")
   end
